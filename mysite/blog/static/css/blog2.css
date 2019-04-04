@@ -1,15 +1,24 @@
 .loading {
-
-
-  display: block;
-  margin-left: 36%;
+ margin-top: auto;
+ left: 0;
+ right:0;
+ position: absolute;
+ margin-left: auto;
+ margin-right: auto;
  margin-top: 10px;
  position: fixed;
 }
-.center{
-
-
-
+img.vert-move {
+ -webkit-animation: mover 1s infinite  alternate;
+ animation: mover 1s infinite  alternate;
+ margin-top: auto;
+ left: 0;
+ right:0;
+ position: absolute;
+ margin-left: auto;
+ margin-right: auto;
+ margin-top: 80px;
+ position: fixed;
 }
 body {
  background-color: #0e293a;
