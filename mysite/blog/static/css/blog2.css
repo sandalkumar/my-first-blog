@@ -21,6 +21,7 @@ img.vert-move {
  position: fixed;
 }
 
+
 body {
  background-color: #0e293a;
 }
@@ -66,8 +67,8 @@ body {
 }
 #c1{
   -webkit-animation: linee 1s infinite repeat;
-
 }
+
 @-webkit-keyframes mover {
     0% { transform: translateY(0); }
     100% { transform: translateY(-10px); }
