@@ -1,23 +1,43 @@
+{% extends 'blog/base.html' %}
 {% load static %}
-<html>
-    <head>
-        <title>Django Girls blog</title>
-        <link rel="stylesheet" href="//maxcdn.bootstrapcdn.com/bootstrap/3.2.0/css/bootstrap.min.css">
-        <link rel="stylesheet" href="//maxcdn.bootstrapcdn.com/bootstrap/3.2.0/css/bootstrap-theme.min.css">
-        <!-- <link rel="stylesheet" href="{% static 'css/blog.css' %}"> -->
-    </head>
-    <body>
-        <div>
-            <h1><a href="/">Django Girls Blog</a></h1>
-        </div>
+{% block content %}
+<div class="container" style="padding-right:82px; margin-top:20px;">
+  {% for post in posts %}
+      <div class="card" style="margin-bottom:24px;">
+             <div class="image">
+                {% if post.cover %}
+                  <img src="{{post.cover.url}}" alt="..."/>
+                {% else %}
+                  <img src="/static/images/default_post.jpg" alt="..."/>
+                {% endif %}
+                 <div class="filter filter-white">
+                     <button type="button" class="btn btn-default btn-simple"
+                     onclick="window.location.href='/blog/{{post.pk}}';"
+                     >
+                         <i class="fa fa-image"></i> Preview
+                     </button>
+                 </div>
+             </div>
+             <div class="content">
+                 <a href="/blog/{{post.id}}">
+                     <h4 class="title">{{post.title}}</h4>
+                 </a>
+                 <a href="/blog/{{post.pk}}">
+                     <p class="description">
+                        {{post.description}}
+                     </p>
+                 </a>
+                  <div class="footer">
+                     <div class="author">
+                         <a class="card-link" href="#">
+                              <span> {{post.author}}</span>
+                         </a>
+                     </div>
+                 </div>
+             </div>
+         </div>
+  {% endfor %}
 
-        {% for post in posts %}
-            <div>
-                <h5>sandal</h5>
-                <p>published: {{ post.published_date }}</p>
-                <h2><a href="">{{ post.title }}</a></h2>
-                <p>{{ post.text|linebreaksbr }}</p>
-            </div>
-        {% endfor %}
-    </body>
-</html>
+
+</div>
+{% endblock content %}
