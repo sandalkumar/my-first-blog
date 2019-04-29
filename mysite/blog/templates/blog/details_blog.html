@@ -15,7 +15,11 @@
           <div class="row">
             <div class="col-md-8">
               <h1 class="title title-blog">{{post.title}}</h1
-              <p>{{post.text}}</p>
+              <p>
+                {% autoescape off %}
+              {{post.text}}
+              {%endautoescape%}
+            </p>
             </div>
             <div class="col-md-3 col-md-offset-1">
               <br/>

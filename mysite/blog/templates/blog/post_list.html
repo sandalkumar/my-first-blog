@@ -16,6 +16,19 @@
                      >
                          <i class="fa fa-image"></i> Preview
                      </button>
+                     {% if request.user.is_authenticated and post.author == request.user %}
+                        <button type="button" class="btn btn-default btn-simple"
+                     onclick="window.location.href='/manage/edit/{{post.pk}}';"
+                     >
+                         <i class="fa fa-edit"></i> Edit
+                     </button>
+
+                     <button type="button" class="btn btn-default btn-simple"
+                     onclick="window.location.href='/manage/delete/{{post.pk}}';"
+                     >
+                         <i class="fa fa-trash"></i> Delete
+                     </button>
+                     {%endif%}
                  </div>
              </div>
              <div class="content">
