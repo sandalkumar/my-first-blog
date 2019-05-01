@@ -6,6 +6,7 @@ from django.contrib import auth
 from django.http import HttpResponseRedirect
 from datetime import datetime
 from django.contrib.auth.decorators import login_required
+from django.contrib.auth.models import User
 
 # TEMPLATES:
 #   blog/base.html
@@ -116,3 +117,39 @@ def delete_blog(request, pk):
     else:
         return HttpResponseRedirect('/')   
     return render(request, 'blog/delete_blog.html', dictV)
+
+# registeration form (add users)
+
+def register(request):
+    dictV={}
+    if request.method=='POST':
+        username=request.POST.get('username')
+        email=request.POST.get('email')
+        password=request.POST.get('password1')   
+        user = User.objects.create_user(username=username,
+                                 email=email)
+        user.save()
+        print("user aded")
+        pas= User.objects.get(username=username)
+        pas.set_password(password)
+        pas.save()
+        print("pass changed")
+    return render(request, 'blog/register.html',{})
+
+        
+    # if request.method == 'POST':
+    #   form = UserCreationForm(request.POST)
+    #   if form.is_valid():
+    #         form.save()
+    #         username = form.cleaned_data.get('username')
+    #         raw_password = form.cleaned_data.get('password1')
+    #         user = authenticate(username=username, password=raw_password)
+    #         login(request, user)
+    #         return redirect('/')
+    #     else:
+    #         return redirect('register')   
+    # else:
+    #   form = UserCreationForm()
+    #   return render(request, 'register.html', {'form': form})
+    # return render(request,'blog/register.html', {}) 
+    # 
