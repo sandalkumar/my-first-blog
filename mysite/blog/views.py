@@ -125,7 +125,12 @@ def register(request):
     if request.method=='POST':
         username=request.POST.get('username')
         email=request.POST.get('email')
-        password=request.POST.get('password1')   
+        password1=request.POST.get('pass1')
+        password2=request.POST.get('pass2')
+
+        if password1 != password2:
+           dictV['error'] = "Password does not match !"
+           return render(request, 'blog/register.html',dictV)  
 
         if User.objects.filter(username=username).count() > 0:
             dictV['error'] = "Username already taken"
@@ -137,7 +142,7 @@ def register(request):
 
         user = User.objects.create_user(username=username,
                                  email=email)
-        user.set_password(password)
+        user.set_password(password2)
         user.save()
         dictV['success'] = "User "+username+" Created Successfully!! You can login now"
 
