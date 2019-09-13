@@ -1,0 +1,6 @@
+Creative Blogs (sandalkumar.pythonanywhere.com)
+
+Developed in Django
+Developed By : Sandal Kumar (GU-2016-1170)
+
+tiny MCE, DISQUES, dJANGO, HTML, CSS, JAVASCRIPT. 

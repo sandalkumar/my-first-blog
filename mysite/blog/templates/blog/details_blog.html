@@ -2,12 +2,12 @@
 {% load static %}
 {% block content %}
 <div class="parallax">
-        <div class="parallax-image" >
+        <div class="parallax-image"  >
           {% if post.cover %}
-            <img src="{{post.cover.url}}">
+            <img src="{{post.cover.url}}" style="width: 100%; height: auto;">
           {% else %}
-            <img src="/static/images/default_post.jpg" alt="..."/>
-          {% endif %}
+            <img src="/static/images/default_post.jpg" alt="..." style="width: 100%; height: auto;">
+          {% endif %} 
         </div>
 </div>
 
